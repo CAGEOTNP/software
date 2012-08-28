@@ -1,0 +1,11 @@
+Package: eeVariogram
+Type: Package
+Title: Tool for web-based expert elicitation for the variogram
+Version: 1.0
+Date: 2011-07-05
+Author: Phuong
+Maintainer: Phuong Truong <phuong.truong@wur.nl>
+Description: Tools for web-based expert elicitation for the variogram.
+Depends: R (>= 2.7.0), methods, sp (>= 0.9-4), gstat (>= 0.9-58)
+License: GPL
+LazyLoad: yes

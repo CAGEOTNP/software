@@ -1,0 +1,100 @@
+Casestudy:
+ actAs: { Timestampable: ~ }
+ columns:
+  case_name   :  { type: string(255), notnull: true }
+  
+Experts:
+ actAs: { Timestampable: ~ }
+ columns:
+  expert_name :  { type: string(255), notnull: true }
+  username    :  { type: string(255), notnull: true }
+  password    :  { type: string(255), notnull: true } 
+  casestudy_id: { type: integer, notnull: true }
+ relations:
+  Casestudy   : {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: many}
+    
+EQs:
+ actAs: { Timestampable: ~ }
+ columns: 
+  max         : { type: decimal(20), scale: 3, notnull: true }
+  min         : { type: decimal(20), scale: 3, notnull: true }
+  med         : { type: decimal(20), scale: 3, notnull: true }
+  fQ          : { type: decimal(20), scale: 3, notnull: true }
+  tQ          : { type: decimal(20), scale: 3, notnull: true }
+  dist_name   : { type: string(255), notnull: true }
+  mean        : { type: decimal(20), scale: 3, notnull: true }
+  std         : { type: decimal(20), scale: 3, notnull: true }
+  lsq         : { type: decimal(20), scale: 3, notnull: true }
+  expert_id   : { type: integer, notnull: true }
+  casestudy_id: { type: integer, notnull: true }
+ relations:
+  Experts     : {onDelete: CASCADE, local:expert_id, foreign: id, foreignAlias: Expert, type: one, foreignType: many}
+  Casestudy   : {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: many}
+
+Pmpdf:
+ columns: 
+  max         : { type: decimal(20), scale: 3, notnull: true }
+  min         : { type: decimal(20), scale: 3, notnull: true }
+  dist_name   : { type: string(255), notnull: true }
+  mean        : { type: decimal(20), scale: 3, notnull: true }
+  std         : { type: decimal(20), scale: 3, notnull: true }
+  lsq         : { type: decimal(20), scale: 3, notnull: true }
+  N_exp       : { type: decimal(20), scale: 3, notnull: true }
+  fQ          : { type: decimal(20), scale: 3, notnull: true }
+  tQ          : { type: decimal(20), scale: 3, notnull: true }
+  casestudy_id:  { type: integer, notnull: true }
+ relations:
+  Casestudy: {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: one}
+
+Meds:
+ columns:
+  lag_one     : { type: decimal(20), scale: 3, notnull: true }
+  lag_two     : { type: decimal(20), scale: 3, notnull: true }
+  lag_three   : { type: decimal(20), scale: 3, notnull: true }
+  lag_four    : { type: decimal(20), scale: 3, notnull: true }
+  lag_five    : { type: decimal(20), scale: 3, notnull: true }
+  lag_six     : { type: decimal(20), scale: 3, notnull: true }
+  lag_seven   : { type: decimal(20), scale: 3, notnull: true } 
+  model       : { type: string(255), notnull: true }
+  nugget      : { type: decimal(20), scale: 3, notnull: true }
+  psill       : { type: decimal(20), scale: 3, notnull: true }  
+  prange      : { type: decimal(20), scale: 3, notnull: true }
+  kappa       : { type: decimal(20), scale: 3, notnull: true }
+  expert_id   : { type: integer, notnull: true }
+  casestudy_id: { type: integer, notnull: true }
+ relations:
+  Experts     : {onDelete: CASCADE, local:expert_id, foreign: id, foreignAlias: Expert, type: one, foreignType: many}
+  Casestudy   : {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: many}
+
+Lags:
+ columns:
+  lag_one     : { type: decimal(20), scale: 3, notnull: true }
+  lag_two     : { type: decimal(20), scale: 3, notnull: true }
+  lag_three   : { type: decimal(20), scale: 3, notnull: true }
+  lag_four    : { type: decimal(20), scale: 3, notnull: true }
+  lag_five    : { type: decimal(20), scale: 3, notnull: true }
+  lag_six     : { type: decimal(20), scale: 3, notnull: true }
+  lag_seven   : { type: decimal(20), scale: 3, notnull: true } 
+  casestudy_id:  { type: integer, notnull: true }
+ relations:
+  Casestudy: {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: one}
+
+Poolvariogram:
+ columns:
+  lag_one     : { type: decimal(20), scale: 3, notnull: true }
+  lag_two     : { type: decimal(20), scale: 3, notnull: true }
+  lag_three   : { type: decimal(20), scale: 3, notnull: true }
+  lag_four    : { type: decimal(20), scale: 3, notnull: true }
+  lag_five    : { type: decimal(20), scale: 3, notnull: true }
+  lag_six     : { type: decimal(20), scale: 3, notnull: true }
+  lag_seven   : { type: decimal(20), scale: 3, notnull: true } 
+  model       : { type: string(255), notnull: true }
+  nugget      : { type: decimal(20), scale: 3, notnull: true }
+  psill       : { type: decimal(20), scale: 3, notnull: true }  
+  prange      : { type: decimal(20), scale: 3, notnull: true }
+  kappa       : { type: decimal(20), scale: 3, notnull: true }
+  N_exp       : { type: decimal(20), scale: 3, notnull: true }
+  casestudy_id:  { type: integer, notnull: true }
+ relations:
+  Casestudy: {onDelete: CASCADE, local:casestudy_id, foreign: id, foreignAlias: Case, type: one, foreignType: one}
+
